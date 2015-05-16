@@ -8,12 +8,28 @@
 
 #import "Response.h"
 
+@interface Response ()
+
+@property (nonatomic, strong) id results;
+
+@end
+
+
 @implementation Response
 
 +(instancetype) responseWithJsonDictionary:(NSDictionary *) JSONDictionary resultClass:(Class) resultClass{
     
+    //Acá se hacer el parseo de los atributos propios de esta clase. V.gr statusCode, errorMessage, etc
     Response * response = [MTLJSONAdapter modelOfClass:self fromJSONDictionary:JSONDictionary error:NULL];
     
+    //Acá se hace el parseo de los atributos que no son propios de esta clase. En este caso resultClass es Volume.
+    id results = JSONDictionary[@"results"];
+    if ([results isKindOfClass:[NSArray class]]) {
+        response.results = [MTLJSONAdapter modelsOfClass:resultClass fromJSONArray:results error:NULL];
+    }
+    else{
+        response.results = [MTLJSONAdapter modelOfClass:resultClass fromJSONDictionary:results error:NULL];
+    }
     return response;
 }
 

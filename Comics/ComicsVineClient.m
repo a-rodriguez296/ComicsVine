@@ -11,6 +11,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import "Constants.h"
 #import "Response.h"
+#import "Volume.h"
 
 @interface ComicsVineClient ()
 
@@ -36,12 +37,13 @@
     NSDictionary *parameters = @{@"api_key":APIKey,
                                  @"format": format,
                                  @"field_list":@"name",
-                                 @"limit":@10,@"page":@1,
+                                 @"limit":@10,
+                                 @"page":@1,
                                  @"query":query,
                                  @"resources":@"volume"};
     
     
-    return [self GET:@"search" parameters:parameters resultClass:Nil];
+    return [self GET:@"search" parameters:parameters resultClass:[Volume class]];
 }
 
 

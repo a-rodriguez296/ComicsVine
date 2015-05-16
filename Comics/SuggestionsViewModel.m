@@ -10,6 +10,8 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "Constants.h"
 #import "ComicsVineClient.h"
+#import "Response.h"
+#import "Volume.h"
 
 @interface SuggestionsViewModel ()
 
@@ -45,9 +47,21 @@
 
 -(RACSignal *) fetchSuggestionsWithQuery:(NSString *) query{
     
+    //Creación del api client
     ComicsVineClient *client = [[ComicsVineClient alloc] init];
-    return [[client fetchSuggestedVolumesWithQuery:query] map:^id(id value) {
-        return @[@"Hola", @"como estas"];
+    //En fetchSugg... crea una señal que retorna un response.
+    //SE usa map para hacer una transformación.
+    return [[client fetchSuggestedVolumesWithQuery:query] map:^id(Response *response) {
+        NSArray *volumes = response.results;
+        
+        NSMutableArray * titles = [NSMutableArray new];
+        for (Volume *volume in volumes) {
+            [titles addObject:volume.title];
+        }
+        
+        
+        
+        return titles;
     }];
     
 }
@@ -68,12 +82,14 @@
     
     //Prevenir referencia circular
     @weakify(self);
+    //Por cada valor que llega del input/señal generamos una peticion al api client
+    //Se usa flattenMap para encadenar con otra señal.
     RACSignal *suggestionsSignal = [input flattenMap:^RACStream *(NSString *query) {
         @strongify(self);
         return [self fetchSuggestionsWithQuery:query];
     }];
     
-    //Binding. Asignar el resultado de suggestionsSignal a suggestions
+    //Binding. Asignar el resultado de suggestionsSignal a suggestions. En otras palabras, se le asigna al array el resultado de suggestion signals
     RAC(self, suggestions) = suggestionsSignal;
     
     //Este método sirve por si le quisiera hacer algo a cada elemento de suggestions. Como no le quiero hacer nada, devuelvo nil

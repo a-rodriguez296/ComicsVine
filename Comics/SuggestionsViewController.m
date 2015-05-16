@@ -53,6 +53,15 @@ static NSString* reuseIdentifier = @"cell";
 }
 
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    NSString *suggestion = [self.viewModel suggestionAtIndex:indexPath.row];
+    
+    if (self.delegate) {
+        [self.delegate suggestionsViewController:self didSelectSuggestion:suggestion];
+    }
+}
+
 
 #pragma mark UISearchResultsUpdating
 -(void)updateSearchResultsForSearchController:(UISearchController *)searchController{

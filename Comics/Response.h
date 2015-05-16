@@ -16,7 +16,7 @@
 @property(nonatomic, copy, readonly) NSString *errorMessage;
 @property(nonatomic, copy, readonly) NSNumber *numberOfTotalResults;
 @property(nonatomic, copy, readonly) NSNumber *offset;
-@property(nonatomic, copy, readonly) id results;
+@property(nonatomic, strong, readonly) id results;
 
 +(instancetype) responseWithJsonDictionary:(NSDictionary *) JSONDictionary resultClass:(Class) resultClass;
 
