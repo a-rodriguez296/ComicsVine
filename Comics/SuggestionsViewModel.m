@@ -9,6 +9,7 @@
 #import "SuggestionsViewModel.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "Constants.h"
+#import "ComicsVineClient.h"
 
 @interface SuggestionsViewModel ()
 
@@ -44,8 +45,11 @@
 
 -(RACSignal *) fetchSuggestionsWithQuery:(NSString *) query{
     
-    NSArray *fakeSuggestions = [query componentsSeparatedByString:@" "];
-    return [[RACSignal return:fakeSuggestions] delay:0.5];
+    ComicsVineClient *client = [[ComicsVineClient alloc] init];
+    return [[client fetchSuggestedVolumesWithQuery:query] map:^id(id value) {
+        return @[@"Hola", @"como estas"];
+    }];
+    
 }
 
 

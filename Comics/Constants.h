@@ -11,5 +11,7 @@
 
 #define _ME_WEAK __weak typeof(self) me = self;
 
+static NSString *const APIKey = @"75d580a0593b7320727309feb6309f62def786cd";
+static NSString *const format = @"json";
 
 #endif
