@@ -1,5 +1,5 @@
 //
-//  MasterViewController.h
+//  SuggestionsViewController.h
 //  Comics
 //
 //  Created by Alejandro Rodriguez on 5/15/15.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MasterViewController : UITableViewController
-
+@interface SuggestionsViewController : UITableViewController <UISearchResultsUpdating>
 
 @end
-
