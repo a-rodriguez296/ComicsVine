@@ -25,7 +25,7 @@
     //Acá se hace el parseo de los atributos que no son propios de esta clase. En este caso resultClass es Volume.
     id results = JSONDictionary[@"results"];
     
-    if (results != Nil) {
+    if (resultClass != Nil) {
         if ([results isKindOfClass:[NSArray class]]) {
             response.results = [MTLJSONAdapter modelsOfClass:resultClass fromJSONArray:results error:NULL];
         }

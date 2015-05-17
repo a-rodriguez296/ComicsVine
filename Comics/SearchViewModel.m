@@ -10,12 +10,16 @@
 #import "SearchResultsViewModel.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "ComicsVineClient.h"
-
+#import "ManagedVolume.h"
+#import "Response.h"
 
 @interface SearchViewModel ()
 
 @property (nonatomic, strong) ComicsVineClient * client;
 @property (nonatomic, assign) NSUInteger currentPage;
+
+@property (nonatomic, strong) NSManagedObjectContext * privateContext;
+@property (nonatomic, strong) NSManagedObjectContext * mainContext;
 
 @end
 
@@ -53,13 +57,29 @@
 #pragma mark Private
 
 -(RACSignal *) fetchNextPage{
-    return nil;
+
+    return [[[self.client fetchVolumesWithQuery:self.query page:self.currentPage++] doNext:^(Response * value) {
+        
+        //Guardar datos en la base de datos
+        
+        
+        
+    }] deliverOnMainThread];
 }
 
 -(void) beginNewSearch{
     self.currentPage = 1;
+    
     //TODO: reset DB
-    [self fetchNextPage];
+    NSManagedObjectContext *context = self.privateContext;
+    [self.privateContext performBlock:^{
+        
+        //El contexto privado siempre debe accederse desde background. Por esa razón esto se hace desde un bloque
+        [ManagedVolume deleteAllVolumesInManagedObjectContext:context];
+    }];
+    
+    //Pasar de señal fria a señal caliente
+    [[[self fetchNextPage] publish] connect];
 }
 
 @end
