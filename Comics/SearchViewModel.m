@@ -8,17 +8,24 @@
 
 #import "SearchViewModel.h"
 #import "SearchResultsViewModel.h"
-#import <ReactiveCocoa/ReactiveCocoa.h>
 #import "ComicsVineClient.h"
 #import "ManagedVolume.h"
 #import "Response.h"
+#import "ManagedVolume.h"
+
+#import <Groot/Groot.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 @interface SearchViewModel ()
 
 @property (nonatomic, strong) ComicsVineClient * client;
 @property (nonatomic, assign) NSUInteger currentPage;
 
+@property (nonatomic, strong) GRTManagedStore *store;
+//Contexto de escritura que va en bakcground
 @property (nonatomic, strong) NSManagedObjectContext * privateContext;
+
+//Contexto de lectura que va en main
 @property (nonatomic, strong) NSManagedObjectContext * mainContext;
 
 @end
@@ -31,11 +38,24 @@
         _currentPage = 1;
         _client = [ComicsVineClient new];
         
-//        RACSignal *input = [RACObserve(self, query) filter:^BOOL(NSString *value) {
-//            return value.length>0;
-//        }];
+        
+        _store = [GRTManagedStore temporaryManagedStore];
+        _mainContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+        [_mainContext setPersistentStoreCoordinator:_store.persistentStoreCoordinator];
+        
+        _privateContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+        [_privateContext setPersistentStoreCoordinator:_store.persistentStoreCoordinator];
+        
+        //Escuchar la notificacion cuando se guarda algo en el contexto privado
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(privateContextDidSave:) name:NSManagedObjectContextDidSaveNotification object:_privateContext];
     }
     return self;
+}
+
+
+-(void)dealloc{
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 -(void) setQuery:(NSString *)query{
@@ -58,10 +78,17 @@
 
 -(RACSignal *) fetchNextPage{
 
-    return [[[self.client fetchVolumesWithQuery:self.query page:self.currentPage++] doNext:^(Response * value) {
+    NSManagedObjectContext *context = self.privateContext;
+    
+    return [[[self.client fetchVolumesWithQuery:self.query page:self.currentPage++] doNext:^(Response * response) {
         
         //Guardar datos en la base de datos
+        [GRTJSONSerialization insertObjectsForEntityName:[ManagedVolume entityName] fromJSONArray:response.results inManagedObjectContext:self.privateContext error:NULL];
         
+        //Hacer el save para que el contexto principal se entere. Esto es un método sincronico.
+        [context performBlockAndWait:^{
+            [context save:NULL];
+        }];
         
         
     }] deliverOnMainThread];
@@ -80,6 +107,17 @@
     
     //Pasar de señal fria a señal caliente
     [[[self fetchNextPage] publish] connect];
+}
+
+-(void) privateContextDidSave:(NSNotification *) notification{
+    
+    NSManagedObjectContext *context = self.mainContext;
+    [context performBlock:^{
+        
+        //Acá es donde se hace el merge de los contextos
+        [context mergeChangesFromContextDidSaveNotification:notification];
+        
+    }];
 }
 
 @end
