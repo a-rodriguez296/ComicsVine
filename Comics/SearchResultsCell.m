@@ -21,6 +21,8 @@
 @implementation SearchResultsCell
 
 
+
+
 -(void) configureWithSearchResults:(SearchResultsViewModel *) searchResults{
     
     [self.coverImage setImageWithURL:searchResults.imageURL];

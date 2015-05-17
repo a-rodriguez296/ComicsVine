@@ -10,6 +10,9 @@
 		9C8C2B9D1B08E659006DF395 /* SearchViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8C2B9C1B08E659006DF395 /* SearchViewModel.m */; };
 		9C8C2BA01B08E695006DF395 /* SearchResultsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8C2B9F1B08E695006DF395 /* SearchResultsViewModel.m */; };
 		9C8C2BA31B08EEC6006DF395 /* SearchResultsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8C2BA21B08EEC6006DF395 /* SearchResultsCell.m */; };
+		9C8C2BA81B0922F8006DF395 /* Search.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9C8C2BA61B0922F8006DF395 /* Search.xcdatamodeld */; };
+		9C8C2BAD1B0924FC006DF395 /* _ManagedVolume.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8C2BAA1B0924FC006DF395 /* _ManagedVolume.m */; };
+		9C8C2BAE1B0924FC006DF395 /* ManagedVolume.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8C2BAC1B0924FC006DF395 /* ManagedVolume.m */; };
 		9CA469221B06FD9300A5208A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA469211B06FD9300A5208A /* main.m */; };
 		9CA469251B06FD9300A5208A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA469241B06FD9300A5208A /* AppDelegate.m */; };
 		9CA4692E1B06FD9300A5208A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CA4692C1B06FD9300A5208A /* Main.storyboard */; };
@@ -44,6 +47,11 @@
 		9C8C2B9F1B08E695006DF395 /* SearchResultsViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultsViewModel.m; sourceTree = "<group>"; };
 		9C8C2BA11B08EEC6006DF395 /* SearchResultsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultsCell.h; sourceTree = "<group>"; };
 		9C8C2BA21B08EEC6006DF395 /* SearchResultsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultsCell.m; sourceTree = "<group>"; };
+		9C8C2BA71B0922F8006DF395 /* Search.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Search.xcdatamodel; sourceTree = "<group>"; };
+		9C8C2BA91B0924FC006DF395 /* _ManagedVolume.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ManagedVolume.h; sourceTree = "<group>"; };
+		9C8C2BAA1B0924FC006DF395 /* _ManagedVolume.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _ManagedVolume.m; sourceTree = "<group>"; };
+		9C8C2BAB1B0924FC006DF395 /* ManagedVolume.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManagedVolume.h; sourceTree = "<group>"; };
+		9C8C2BAC1B0924FC006DF395 /* ManagedVolume.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagedVolume.m; sourceTree = "<group>"; };
 		9CA4691C1B06FD9300A5208A /* Comics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Comics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CA469201B06FD9300A5208A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9CA469211B06FD9300A5208A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -107,6 +115,38 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		9C8C2BA51B0922D0006DF395 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9CE17E991B07DA3300189CF0 /* Response.h */,
+				9CE17E9A1B07DA3300189CF0 /* Response.m */,
+				9CE17E9E1B07DEB800189CF0 /* Volume.h */,
+				9CE17E9F1B07DEB800189CF0 /* Volume.m */,
+				9C8C2BAF1B092503006DF395 /* Core Data */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		9C8C2BAF1B092503006DF395 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				9C8C2BA61B0922F8006DF395 /* Search.xcdatamodeld */,
+				9C8C2BB01B092518006DF395 /* Machine Files */,
+				9C8C2BAB1B0924FC006DF395 /* ManagedVolume.h */,
+				9C8C2BAC1B0924FC006DF395 /* ManagedVolume.m */,
+			);
+			name = "Core Data";
+			sourceTree = "<group>";
+		};
+		9C8C2BB01B092518006DF395 /* Machine Files */ = {
+			isa = PBXGroup;
+			children = (
+				9C8C2BA91B0924FC006DF395 /* _ManagedVolume.h */,
+				9C8C2BAA1B0924FC006DF395 /* _ManagedVolume.m */,
+			);
+			name = "Machine Files";
+			sourceTree = "<group>";
+		};
 		9CA469131B06FD9200A5208A = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +170,7 @@
 		9CA4691E1B06FD9300A5208A /* Comics */ = {
 			isa = PBXGroup;
 			children = (
+				9C8C2BA51B0922D0006DF395 /* Models */,
 				9C8C2BA41B08EECD006DF395 /* Views */,
 				9CE17E9C1B07DE8100189CF0 /* Utils */,
 				9CE17E9D1B07DE9400189CF0 /* Network */,
@@ -141,10 +182,6 @@
 				9CA4692F1B06FD9300A5208A /* Images.xcassets */,
 				9CA469311B06FD9300A5208A /* LaunchScreen.xib */,
 				9CA4691F1B06FD9300A5208A /* Supporting Files */,
-				9CE17E991B07DA3300189CF0 /* Response.h */,
-				9CE17E9A1B07DA3300189CF0 /* Response.m */,
-				9CE17E9E1B07DEB800189CF0 /* Volume.h */,
-				9CE17E9F1B07DEB800189CF0 /* Volume.m */,
 			);
 			path = Comics;
 			sourceTree = "<group>";
@@ -377,6 +414,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CE17E981B07A4D500189CF0 /* ComicsVineClient.m in Sources */,
+				9C8C2BAE1B0924FC006DF395 /* ManagedVolume.m in Sources */,
+				9C8C2BAD1B0924FC006DF395 /* _ManagedVolume.m in Sources */,
 				9C8C2BA01B08E695006DF395 /* SearchResultsViewModel.m in Sources */,
 				9C8C2B9D1B08E659006DF395 /* SearchViewModel.m in Sources */,
 				9CA4694E1B07034900A5208A /* SuggestionsViewController.m in Sources */,
@@ -385,6 +424,7 @@
 				9CA469531B07083500A5208A /* SuggestionsViewModel.m in Sources */,
 				9CA4694A1B06FF1800A5208A /* SearchViewController.m in Sources */,
 				9C8C2BA31B08EEC6006DF395 /* SearchResultsCell.m in Sources */,
+				9C8C2BA81B0922F8006DF395 /* Search.xcdatamodeld in Sources */,
 				9CA469251B06FD9300A5208A /* AppDelegate.m in Sources */,
 				9CA469221B06FD9300A5208A /* main.m in Sources */,
 			);
@@ -595,6 +635,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9C8C2BA61B0922F8006DF395 /* Search.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9C8C2BA71B0922F8006DF395 /* Search.xcdatamodel */,
+			);
+			currentVersion = 9C8C2BA71B0922F8006DF395 /* Search.xcdatamodel */;
+			path = Search.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 9CA469141B06FD9200A5208A /* Project object */;
 }

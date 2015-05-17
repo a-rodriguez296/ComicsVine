@@ -12,8 +12,34 @@
 #import "ComicsVineClient.h"
 
 
+@interface SearchViewModel ()
+
+@property (nonatomic, strong) ComicsVineClient * client;
+@property (nonatomic, assign) NSUInteger currentPage;
+
+@end
+
 @implementation SearchViewModel
 
+- (instancetype)init
+{
+    if ( self == [super init]) {
+        _currentPage = 1;
+        _client = [ComicsVineClient new];
+        
+//        RACSignal *input = [RACObserve(self, query) filter:^BOOL(NSString *value) {
+//            return value.length>0;
+//        }];
+    }
+    return self;
+}
+
+-(void) setQuery:(NSString *)query{
+    if (![_query isEqualToString:query]) {
+        _query = [query copy];
+        [self beginNewSearch];
+    }
+}
 
 -(NSUInteger)numberOfResults{
     
@@ -21,7 +47,19 @@
 }
 
 -(SearchResultsViewModel *) resultAtIndex:(NSUInteger) index{
-    return [[SearchResultsViewModel alloc] initWithImageUrl:[NSURL URLWithString:@"https://justinmarroquin.files.wordpress.com/2013/09/1016831_679253562090048_2110826334_n.jpg?w=640"] title:@"titlulo asdfadsf adsf adsfadsfadsf adsfadsfasdf adsfasdf" publisher:@"asdfasdfasdfad adsfadsfadsf"];
+    return nil;
+}
+
+#pragma mark Private
+
+-(RACSignal *) fetchNextPage{
+    return nil;
+}
+
+-(void) beginNewSearch{
+    self.currentPage = 1;
+    //TODO: reset DB
+    [self fetchNextPage];
 }
 
 @end
