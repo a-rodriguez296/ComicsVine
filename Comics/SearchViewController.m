@@ -55,6 +55,15 @@
 }
 
 
+
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row == (self.viewModel.numberOfResults -1)) {
+        NSLog(@"Last cell");
+        [self.viewModel fetchMoreResults];
+    }
+}
+
 -(IBAction)presentSuggestions:(id)sender{
  
     SuggestionsViewController *suggestionsVC = [SuggestionsViewController new];

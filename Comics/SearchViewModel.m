@@ -16,7 +16,7 @@
 #import <Groot/Groot.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
-@interface SearchViewModel ()
+@interface SearchViewModel () <NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, strong) ComicsVineClient * client;
 @property (nonatomic, assign) NSUInteger currentPage;
@@ -27,6 +27,12 @@
 
 //Contexto de lectura que va en main
 @property (nonatomic, strong) NSManagedObjectContext * mainContext;
+
+@property (nonatomic, strong) NSFetchedResultsController * frc;
+
+//Hereda de rac signal
+@property (nonatomic, strong) RACSubject * didUpdateContentsSubject;
+
 
 @end
 
@@ -48,10 +54,31 @@
         
         //Escuchar la notificacion cuando se guarda algo en el contexto privado
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(privateContextDidSave:) name:NSManagedObjectContextDidSaveNotification object:_privateContext];
+        
+        
+        _frc = [[NSFetchedResultsController alloc] initWithFetchRequest:[ManagedVolume fetchRequestForAllVolumes] managedObjectContext:_mainContext sectionNameKeyPath:nil cacheName:nil];
+        [_frc setDelegate:self];
+        
+        [_frc performFetch:NULL];
+        
+        
+        //Forma de crear una señal cuando se llama un método del delegado
+//        _didUpdateResults = [self rac_signalForSelector:@selector(controllerDidChangeContent:)];
+        
+        
+        _didUpdateContentsSubject = [RACSubject subject];
     }
     return self;
 }
 
+-(RACSignal *)didUpdateResults{
+    return self.didUpdateContentsSubject;
+}
+
+-(void)controllerDidChangeContent:(NSFetchedResultsController *)controller{
+    //Con esto se manda la señal. Pero es menos código hacerlo así  _didUpdateResults = [self rac_signalForSelector:@selector(controllerDidChangeContent:)]; como esta en el init.
+    [self.didUpdateContentsSubject sendNext:nil];
+}
 
 -(void)dealloc{
     
@@ -67,11 +94,14 @@
 
 -(NSUInteger)numberOfResults{
     
-    return 1;
+    id<NSFetchedResultsSectionInfo> sectionInfo = self.frc.sections[0];
+    return [sectionInfo numberOfObjects];
 }
 
 -(SearchResultsViewModel *) resultAtIndex:(NSUInteger) index{
-    return nil;
+    
+    ManagedVolume *volume = [self.frc objectAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
+    return [[SearchResultsViewModel alloc] initWithImageUrl:[NSURL URLWithString:volume.imageURL] title:volume.title publisher:volume.publisher];
 }
 
 #pragma mark Private
@@ -103,6 +133,8 @@
         
         //El contexto privado siempre debe accederse desde background. Por esa razón esto se hace desde un bloque
         [ManagedVolume deleteAllVolumesInManagedObjectContext:context];
+        
+        [context save:NULL];
     }];
     
     //Pasar de señal fria a señal caliente
@@ -118,6 +150,10 @@
         [context mergeChangesFromContextDidSaveNotification:notification];
         
     }];
+}
+
+-(void)fetchMoreResults{
+     [[[self fetchNextPage] publish] connect];
 }
 
 @end
