@@ -51,7 +51,7 @@
     ComicsVineClient *client = [[ComicsVineClient alloc] init];
     //En fetchSugg... crea una señal que retorna un response.
     //SE usa map para hacer una transformación.
-    return [[client fetchSuggestedVolumesWithQuery:query] map:^id(Response *response) {
+    return [[[client fetchSuggestedVolumesWithQuery:query] map:^id(Response *response) {
         NSArray *volumes = response.results;
         
         NSMutableArray * titles = [NSMutableArray new];
@@ -62,7 +62,7 @@
         
         
         return titles;
-    }];
+    }] deliverOnMainThread];
     
 }
 
@@ -90,15 +90,22 @@
     }];
     
     //Binding. Asignar el resultado de suggestionsSignal a suggestions. En otras palabras, se le asigna al array el resultado de suggestion signals
-    RAC(self, suggestions) = suggestionsSignal;
-    
-    //Este método sirve por si le quisiera hacer algo a cada elemento de suggestions. Como no le quiero hacer nada, devuelvo nil
-    _didUpdateSuggestionsSignal = [suggestionsSignal map:^id(NSArray * suggestions) {
-        return  nil;
+    //El catch se utiliza para el manejo del error. Si no se pone el catch y hay error, la aplicación se revienta
+    RAC(self, suggestions) = [suggestionsSignal catch:^RACSignal *(NSError *error) {
+        
+        //Hay que devolver un array pq el atributo suggestions es un array
+        return [RACSignal return:@[error.localizedDescription]];
     }];
     
-    //Forma rápida
-    //        _didUpdateSuggestionsSignal = [suggestionsSignal mapReplace:nil];
+    //Este método sirve por si le quisiera hacer algo a cada elemento de suggestions. Como no le quiero hacer nada, devuelvo nil
+    //Acá la señal didUpdate... es una señal que observa  suggestions
+    _didUpdateSuggestionsSignal = [RACObserve(self, suggestions) mapReplace:nil];
+    
+    //Si quiero hacer un map de algo se puede hacer asi
+//    [suggestionsSignal map:^id(NSArray * suggestions) {
+//        return  nil;
+//    }];
+
     
 }
 

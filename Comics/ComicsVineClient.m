@@ -53,7 +53,7 @@
     
     
 
-    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+    return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         
 
         AFHTTPRequestOperation * operation = [self.requestManager GET:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -68,7 +68,8 @@
         return [RACDisposable disposableWithBlock:^{
             [operation cancel];
         }];
-    }];
+        //Este metodo deliver on lo que hace es q la respuesta de esa señal se ejecute en background (Esto se hace con [RACScheduler scheduler]). Lo que se hace aqui es q el mapeo de la respuesta del servidor se hace en background.
+    }] deliverOn:[RACScheduler scheduler]];
 }
 
 
