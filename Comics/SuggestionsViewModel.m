@@ -56,10 +56,11 @@
         
         NSMutableArray * titles = [NSMutableArray new];
         for (Volume *volume in volumes) {
+            if ([titles containsObject:volume.title]) {
+                continue;
+            }
             [titles addObject:volume.title];
         }
-        
-        
         
         return titles;
     }] deliverOnMainThread];

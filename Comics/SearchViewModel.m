@@ -104,7 +104,21 @@
     return [[SearchResultsViewModel alloc] initWithImageUrl:[NSURL URLWithString:volume.imageURL] title:volume.title publisher:volume.publisher];
 }
 
+
+
+
+-(void) fetchCharacterDataAtIndex:(NSUInteger ) index{
+    NSString *characterID = [self volumeIdentifierAtIndex:index];
+    [[[[self.client fetchVolumeCharachtersWithId:characterID]deliverOnMainThread]publish]connect];
+}
+
 #pragma mark Private
+
+-(NSString *) volumeIdentifierAtIndex:(NSUInteger ) index{
+    ManagedVolume *volume = [self.frc objectAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
+    return [NSString stringWithFormat:@"%@", volume.identifier];
+}
+
 
 -(RACSignal *) fetchNextPage{
 

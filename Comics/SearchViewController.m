@@ -43,6 +43,9 @@
     return [self.viewModel numberOfResults];
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self.viewModel fetchCharacterDataAtIndex:indexPath.row];
+}
 
 #pragma mark - Actions
 

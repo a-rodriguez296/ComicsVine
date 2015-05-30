@@ -21,7 +21,7 @@
 
 
 -(SearchResultsViewModel *) resultAtIndex:(NSUInteger) index;
-
+-(void) fetchCharacterDataAtIndex:(NSUInteger ) index;
 -(void) fetchMoreResults;
 
 @end

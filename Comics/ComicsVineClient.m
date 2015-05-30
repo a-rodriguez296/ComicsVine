@@ -59,6 +59,18 @@
     return [self GET:@"search" parameters:parameters resultClass:Nil];
 }
 
+-(RACSignal *) fetchVolumeCharachtersWithId:(NSString *) volumeID{
+    
+    NSDictionary *parameters = @{@"api_key":APIKey,
+                                 @"format": format,
+                                 @"field_list":@"characters",
+                                 @"limit":@10,
+                                 @"page":@1,
+                                 @"resources":@"volume"};
+    
+    return [self GET:[NSString stringWithFormat:@"volume/4050-%@", volumeID] parameters:parameters resultClass:[Volume class]];
+    
+}
 
 
 #pragma mark Private Methods
