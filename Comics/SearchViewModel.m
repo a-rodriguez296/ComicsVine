@@ -109,7 +109,13 @@
 
 -(void) fetchCharacterDataAtIndex:(NSUInteger ) index{
     NSString *characterID = [self volumeIdentifierAtIndex:index];
-    [[[[self.client fetchVolumeCharachtersWithId:characterID]deliverOnMainThread]publish]connect];
+    [[[[[self.client fetchVolumeCharachtersWithId:characterID] map:^id(Response *value) {
+        
+        
+        NSArray *a =[NSArray arrayWithArray:[value.results objectForKey:@"characters]"]];
+        
+        return nil;
+    }] deliverOnMainThread]publish]connect];
 }
 
 #pragma mark Private

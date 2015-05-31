@@ -12,6 +12,7 @@
 #import "Constants.h"
 #import "Response.h"
 #import "Volume.h"
+#import "Character.h"
 
 @interface ComicsVineClient ()
 
@@ -63,7 +64,7 @@
     
     NSDictionary *parameters = @{@"api_key":APIKey,
                                  @"format": format,
-                                 @"field_list":@"characters",
+                                 @"field_list":@"characters,name",
                                  @"limit":@10,
                                  @"page":@1,
                                  @"resources":@"volume"};
