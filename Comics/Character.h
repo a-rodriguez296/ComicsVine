@@ -7,11 +7,12 @@
 //
 #import "MTLModel.h"
 #import <Mantle/Mantle.h>
-
+@class Image;
 
 @interface Character : MTLModel <MTLJSONSerializing>
 
 @property(nonatomic, copy, readonly) NSString *name;
 @property(nonatomic, copy, readonly) NSString *characterId;
+@property(nonatomic) Image *image1;
 
 @end

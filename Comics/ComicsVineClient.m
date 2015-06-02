@@ -62,14 +62,13 @@
 
 -(RACSignal *) fetchVolumeCharachtersWithId:(NSString *) volumeID{
     
+    NSString *filter = [NSString stringWithFormat:@"volume:%@",volumeID];
     NSDictionary *parameters = @{@"api_key":APIKey,
                                  @"format": format,
-                                 @"field_list":@"characters,name",
-                                 @"limit":@10,
-                                 @"page":@1,
-                                 @"resources":@"volume"};
+                                 @"field_list":@"name,id,image",
+                                 @"filter": filter};
     
-    return [self GET:[NSString stringWithFormat:@"volume/4050-%@", volumeID] parameters:parameters resultClass:[Volume class]];
+    return [self GET:@"characters" parameters:parameters resultClass:[Character class]];
     
 }
 

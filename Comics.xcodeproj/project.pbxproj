@@ -27,6 +27,7 @@
 		9CAE7D6A1B1BDB680076F8E6 /* CharactersViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE7D691B1BDB680076F8E6 /* CharactersViewModel.m */; };
 		9CAE7D6F1B1BF2930076F8E6 /* CharacterResultViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE7D6E1B1BF2930076F8E6 /* CharacterResultViewModel.m */; };
 		9CAE7D721B1BF5500076F8E6 /* CharacterResultsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE7D711B1BF5500076F8E6 /* CharacterResultsCell.m */; };
+		9CDBEB4B1B1D56E1007C90B6 /* Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDBEB4A1B1D56E1007C90B6 /* Image.m */; };
 		9CE17E981B07A4D500189CF0 /* ComicsVineClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE17E971B07A4D500189CF0 /* ComicsVineClient.m */; };
 		9CE17E9B1B07DA3300189CF0 /* Response.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE17E9A1B07DA3300189CF0 /* Response.m */; };
 		9CE17EA01B07DEB800189CF0 /* Volume.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE17E9F1B07DEB800189CF0 /* Volume.m */; };
@@ -84,6 +85,8 @@
 		9CAE7D6E1B1BF2930076F8E6 /* CharacterResultViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharacterResultViewModel.m; sourceTree = "<group>"; };
 		9CAE7D701B1BF5500076F8E6 /* CharacterResultsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacterResultsCell.h; sourceTree = "<group>"; };
 		9CAE7D711B1BF5500076F8E6 /* CharacterResultsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharacterResultsCell.m; sourceTree = "<group>"; };
+		9CDBEB491B1D56E1007C90B6 /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
+		9CDBEB4A1B1D56E1007C90B6 /* Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Image.m; sourceTree = "<group>"; };
 		9CE17E951B07995900189CF0 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		9CE17E961B07A4D500189CF0 /* ComicsVineClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComicsVineClient.h; sourceTree = "<group>"; };
 		9CE17E971B07A4D500189CF0 /* ComicsVineClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComicsVineClient.m; sourceTree = "<group>"; };
@@ -135,6 +138,8 @@
 		9C8C2BA51B0922D0006DF395 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9CDBEB491B1D56E1007C90B6 /* Image.h */,
+				9CDBEB4A1B1D56E1007C90B6 /* Image.m */,
 				9CE17E991B07DA3300189CF0 /* Response.h */,
 				9CE17E9A1B07DA3300189CF0 /* Response.m */,
 				9CE17E9E1B07DEB800189CF0 /* Volume.h */,
@@ -471,6 +476,7 @@
 				9CA4694E1B07034900A5208A /* SuggestionsViewController.m in Sources */,
 				9CE17E9B1B07DA3300189CF0 /* Response.m in Sources */,
 				9CE17EA01B07DEB800189CF0 /* Volume.m in Sources */,
+				9CDBEB4B1B1D56E1007C90B6 /* Image.m in Sources */,
 				9CA469531B07083500A5208A /* SuggestionsViewModel.m in Sources */,
 				9CA4694A1B06FF1800A5208A /* SearchViewController.m in Sources */,
 				9C8C2BA31B08EEC6006DF395 /* SearchResultsCell.m in Sources */,

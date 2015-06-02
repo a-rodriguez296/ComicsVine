@@ -9,7 +9,6 @@
 #import "CharactersViewModel.h"
 #import "ComicsVineClient.h"
 #import "Response.h"
-#import "Volume.h"
 #import "Character.h"
 #import "CharacterResultViewModel.h"
 
@@ -64,8 +63,7 @@
     return [[[self.client fetchVolumeCharachtersWithId:self.characterID] deliverOnMainThread] map:^id(Response *response) {
         
         @strongify(self)
-        Volume *vol = response.results;
-        self.characters = vol.characters;
+        self.characters = response.results;
 
         
         return nil;

@@ -7,19 +7,19 @@
 //
 
 #import "Character.h"
-#import "Volume.h"
+#import "Image.h"
+
 
 @implementation Character
 
 +(NSDictionary *)JSONKeyPathsByPropertyKey{
     return @{@"name": @"name",
-             @"characterId": @"id"};
+             @"characterId": @"id",
+             @"image1":@"image"};
 }
 
-+ (NSValueTransformer *)charactersJSONTransformer {
-
-    return [MTLJSONAdapter arrayTransformerWithModelClass:[Volume class]];
++ (NSValueTransformer *)image1JSONTransformer{
+    return [MTLJSONAdapter dictionaryTransformerWithModelClass:[Image class]];
 }
-
 
 @end

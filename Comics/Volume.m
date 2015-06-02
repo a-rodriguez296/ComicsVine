@@ -16,16 +16,6 @@
              @"characters": @"characters"};
 }
 
-//+(Class)classForParsingJSONDictionary:(NSDictionary *)JSONDictionary{
-//    NSLog(@"%@", JSONDictionary[@"results"]);
-//    if ([JSONDictionary objectForKey:@"characters"]) {
-//        return Character.class;
-//    }
-//    else{
-//        return self;
-//    }
-//}
-
 + (NSValueTransformer *)charactersJSONTransformer{
     return [MTLJSONAdapter arrayTransformerWithModelClass:[Character class]];
 }
