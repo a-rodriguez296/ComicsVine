@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rS3-R9-Ivy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E17e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rS3-R9-Ivy">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -118,22 +118,13 @@
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sqd-qN-pL2" userLabel="Publisher">
-                                            <rect key="frame" x="79" y="31" width="36" height="17"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="n41-oj-srP" firstAttribute="leading" secondItem="F5H-Ne-AAr" secondAttribute="leading" constant="15" id="0J0-c4-y6W"/>
                                         <constraint firstItem="n41-oj-srP" firstAttribute="top" secondItem="F5H-Ne-AAr" secondAttribute="top" constant="8" id="IVS-Xp-XwS"/>
                                         <constraint firstItem="MoY-y5-ZEt" firstAttribute="leading" secondItem="n41-oj-srP" secondAttribute="trailing" constant="8" id="LoI-Ay-xfA"/>
                                         <constraint firstItem="MoY-y5-ZEt" firstAttribute="top" secondItem="F5H-Ne-AAr" secondAttribute="top" constant="8" id="NGQ-aQ-jBe"/>
-                                        <constraint firstItem="Sqd-qN-pL2" firstAttribute="top" secondItem="MoY-y5-ZEt" secondAttribute="bottom" constant="2" id="RUY-Kh-dTp"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="MoY-y5-ZEt" secondAttribute="trailing" constant="20" symbolic="YES" id="e19-Yy-UMF"/>
-                                        <constraint firstItem="Sqd-qN-pL2" firstAttribute="leading" secondItem="n41-oj-srP" secondAttribute="trailing" constant="8" id="np1-UJ-lpr"/>
-                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Sqd-qN-pL2" secondAttribute="trailing" constant="20" symbolic="YES" id="oD3-wL-t4u"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>

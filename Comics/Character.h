@@ -13,6 +13,6 @@
 
 @property(nonatomic, copy, readonly) NSString *name;
 @property(nonatomic, copy, readonly) NSString *characterId;
-@property(nonatomic) Image *image1;
+@property(nonatomic) Image *image;
 
 @end

@@ -15,10 +15,10 @@
 +(NSDictionary *)JSONKeyPathsByPropertyKey{
     return @{@"name": @"name",
              @"characterId": @"id",
-             @"image1":@"image"};
+             @"image":@"image"};
 }
 
-+ (NSValueTransformer *)image1JSONTransformer{
++ (NSValueTransformer *)imageJSONTransformer{
     return [MTLJSONAdapter dictionaryTransformerWithModelClass:[Image class]];
 }
 

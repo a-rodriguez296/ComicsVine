@@ -11,12 +11,12 @@
 @implementation Image
 
 +(NSDictionary *)JSONKeyPathsByPropertyKey{
-    return @{@"stImage":@"small_url",
-             @"icon":@"icon_url"};
+    return @{@"imageURL":@"small_url"};
 }
 
-//+ (NSValueTransformer *)imageURLJSONTransformer{
-//    return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
-//}
++ (NSValueTransformer *)imageURLJSONTransformer{
+    return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
+}
+
 
 @end

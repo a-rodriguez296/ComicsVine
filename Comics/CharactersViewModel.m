@@ -1,4 +1,4 @@
-//
+    //
 //  CharactersViewModel.m
 //  Comics
 //
@@ -10,6 +10,7 @@
 #import "ComicsVineClient.h"
 #import "Response.h"
 #import "Character.h"
+#import "Image.h"
 #import "CharacterResultViewModel.h"
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
@@ -45,7 +46,7 @@
 
 -(CharacterResultViewModel *) resultAtIndex:(NSUInteger) index{
     Character *curretCharacter = self.characters[index];
-    return [[CharacterResultViewModel alloc] initWithImageUrl:nil characterName:curretCharacter.name characterID:curretCharacter.characterId];
+    return [[CharacterResultViewModel alloc] initWithImageUrl:curretCharacter.image.imageURL characterName:curretCharacter.name characterID:curretCharacter.characterId];
 }
 
 #pragma mark Private
@@ -64,8 +65,6 @@
         
         @strongify(self)
         self.characters = response.results;
-
-        
         return nil;
     }];
     

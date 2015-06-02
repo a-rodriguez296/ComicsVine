@@ -8,6 +8,7 @@
 
 #import "CharacterResultsCell.h"
 #import "CharacterResultViewModel.h"
+#import <AFNetworking/UIKit+AFNetworking.h>
 
 @implementation CharacterResultsCell
 
@@ -18,5 +19,14 @@
 -(void) configureCellWithModel:(CharacterResultViewModel *) model{
     
     [self.lblCharacterName setText:model.characterName];
+    [self.imgCharacter setImageWithURL:model.imageURL];
+}
+
+
+-(void)prepareForReuse{
+    [super prepareForReuse];
+    
+    [self.imgCharacter cancelImageRequestOperation];
+    [self.imgCharacter setImage:nil];
 }
 @end

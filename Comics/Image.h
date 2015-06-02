@@ -7,10 +7,10 @@
 //
 
 #import <Mantle/Mantle.h>
+#import "MTLModel.h"
 
 @interface Image : MTLModel <MTLJSONSerializing>
 
-@property(nonatomic, copy) NSString *stImage;
-@property (nonatomic,copy)NSString *icon;
+@property(nonatomic, copy) NSURL *imageURL;
 
 @end
