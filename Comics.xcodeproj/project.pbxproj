@@ -23,6 +23,10 @@
 		9CA4694E1B07034900A5208A /* SuggestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA4694D1B07034900A5208A /* SuggestionsViewController.m */; };
 		9CA469531B07083500A5208A /* SuggestionsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA469521B07083500A5208A /* SuggestionsViewModel.m */; };
 		9CAE7D631B1A71B20076F8E6 /* Character.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE7D621B1A71B20076F8E6 /* Character.m */; };
+		9CAE7D661B1BD3F70076F8E6 /* CharactersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE7D651B1BD3F70076F8E6 /* CharactersViewController.m */; };
+		9CAE7D6A1B1BDB680076F8E6 /* CharactersViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE7D691B1BDB680076F8E6 /* CharactersViewModel.m */; };
+		9CAE7D6F1B1BF2930076F8E6 /* CharacterResultViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE7D6E1B1BF2930076F8E6 /* CharacterResultViewModel.m */; };
+		9CAE7D721B1BF5500076F8E6 /* CharacterResultsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAE7D711B1BF5500076F8E6 /* CharacterResultsCell.m */; };
 		9CE17E981B07A4D500189CF0 /* ComicsVineClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE17E971B07A4D500189CF0 /* ComicsVineClient.m */; };
 		9CE17E9B1B07DA3300189CF0 /* Response.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE17E9A1B07DA3300189CF0 /* Response.m */; };
 		9CE17EA01B07DEB800189CF0 /* Volume.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE17E9F1B07DEB800189CF0 /* Volume.m */; };
@@ -72,6 +76,14 @@
 		9CA469521B07083500A5208A /* SuggestionsViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestionsViewModel.m; sourceTree = "<group>"; };
 		9CAE7D611B1A71B20076F8E6 /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Character.h; sourceTree = "<group>"; };
 		9CAE7D621B1A71B20076F8E6 /* Character.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Character.m; sourceTree = "<group>"; };
+		9CAE7D641B1BD3F70076F8E6 /* CharactersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharactersViewController.h; sourceTree = "<group>"; };
+		9CAE7D651B1BD3F70076F8E6 /* CharactersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharactersViewController.m; sourceTree = "<group>"; };
+		9CAE7D681B1BDB680076F8E6 /* CharactersViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharactersViewModel.h; sourceTree = "<group>"; };
+		9CAE7D691B1BDB680076F8E6 /* CharactersViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharactersViewModel.m; sourceTree = "<group>"; };
+		9CAE7D6D1B1BF2930076F8E6 /* CharacterResultViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacterResultViewModel.h; sourceTree = "<group>"; };
+		9CAE7D6E1B1BF2930076F8E6 /* CharacterResultViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharacterResultViewModel.m; sourceTree = "<group>"; };
+		9CAE7D701B1BF5500076F8E6 /* CharacterResultsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacterResultsCell.h; sourceTree = "<group>"; };
+		9CAE7D711B1BF5500076F8E6 /* CharacterResultsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharacterResultsCell.m; sourceTree = "<group>"; };
 		9CE17E951B07995900189CF0 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		9CE17E961B07A4D500189CF0 /* ComicsVineClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComicsVineClient.h; sourceTree = "<group>"; };
 		9CE17E971B07A4D500189CF0 /* ComicsVineClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComicsVineClient.m; sourceTree = "<group>"; };
@@ -114,6 +126,8 @@
 			children = (
 				9C8C2BA11B08EEC6006DF395 /* SearchResultsCell.h */,
 				9C8C2BA21B08EEC6006DF395 /* SearchResultsCell.m */,
+				9CAE7D701B1BF5500076F8E6 /* CharacterResultsCell.h */,
+				9CAE7D711B1BF5500076F8E6 /* CharacterResultsCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -222,6 +236,7 @@
 			children = (
 				9CA4694F1B07036500A5208A /* Search */,
 				9CA469501B07037600A5208A /* Suggestions */,
+				9CAE7D671B1BD3FF0076F8E6 /* Characters */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -249,12 +264,41 @@
 			children = (
 				9CA469511B07083500A5208A /* SuggestionsViewModel.h */,
 				9CA469521B07083500A5208A /* SuggestionsViewModel.m */,
+				9CAE7D6B1B1BF2610076F8E6 /* Search View Models */,
+				9CAE7D6C1B1BF2730076F8E6 /* Character View Models */,
+			);
+			name = "View Models";
+			sourceTree = "<group>";
+		};
+		9CAE7D671B1BD3FF0076F8E6 /* Characters */ = {
+			isa = PBXGroup;
+			children = (
+				9CAE7D641B1BD3F70076F8E6 /* CharactersViewController.h */,
+				9CAE7D651B1BD3F70076F8E6 /* CharactersViewController.m */,
+			);
+			name = Characters;
+			sourceTree = "<group>";
+		};
+		9CAE7D6B1B1BF2610076F8E6 /* Search View Models */ = {
+			isa = PBXGroup;
+			children = (
 				9C8C2B9B1B08E659006DF395 /* SearchViewModel.h */,
 				9C8C2B9C1B08E659006DF395 /* SearchViewModel.m */,
 				9C8C2B9E1B08E695006DF395 /* SearchResultsViewModel.h */,
 				9C8C2B9F1B08E695006DF395 /* SearchResultsViewModel.m */,
 			);
-			name = "View Models";
+			name = "Search View Models";
+			sourceTree = "<group>";
+		};
+		9CAE7D6C1B1BF2730076F8E6 /* Character View Models */ = {
+			isa = PBXGroup;
+			children = (
+				9CAE7D681B1BDB680076F8E6 /* CharactersViewModel.h */,
+				9CAE7D691B1BDB680076F8E6 /* CharactersViewModel.m */,
+				9CAE7D6D1B1BF2930076F8E6 /* CharacterResultViewModel.h */,
+				9CAE7D6E1B1BF2930076F8E6 /* CharacterResultViewModel.m */,
+			);
+			name = "Character View Models";
 			sourceTree = "<group>";
 		};
 		9CE17E9C1B07DE8100189CF0 /* Utils */ = {
@@ -422,6 +466,7 @@
 				9C8C2BAE1B0924FC006DF395 /* ManagedVolume.m in Sources */,
 				9C8C2BAD1B0924FC006DF395 /* _ManagedVolume.m in Sources */,
 				9C8C2BA01B08E695006DF395 /* SearchResultsViewModel.m in Sources */,
+				9CAE7D661B1BD3F70076F8E6 /* CharactersViewController.m in Sources */,
 				9C8C2B9D1B08E659006DF395 /* SearchViewModel.m in Sources */,
 				9CA4694E1B07034900A5208A /* SuggestionsViewController.m in Sources */,
 				9CE17E9B1B07DA3300189CF0 /* Response.m in Sources */,
@@ -430,8 +475,11 @@
 				9CA4694A1B06FF1800A5208A /* SearchViewController.m in Sources */,
 				9C8C2BA31B08EEC6006DF395 /* SearchResultsCell.m in Sources */,
 				9CAE7D631B1A71B20076F8E6 /* Character.m in Sources */,
+				9CAE7D6F1B1BF2930076F8E6 /* CharacterResultViewModel.m in Sources */,
 				9C8C2BA81B0922F8006DF395 /* Search.xcdatamodeld in Sources */,
 				9CA469251B06FD9300A5208A /* AppDelegate.m in Sources */,
+				9CAE7D6A1B1BDB680076F8E6 /* CharactersViewModel.m in Sources */,
+				9CAE7D721B1BF5500076F8E6 /* CharacterResultsCell.m in Sources */,
 				9CA469221B06FD9300A5208A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,6 +10,8 @@
 #import "SuggestionsViewController.h"
 #import "SearchViewModel.h"
 #import "SearchResultsCell.h"
+#import "CharactersViewController.h"
+
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
 @interface SearchViewController () <SuggestionsViewControllerDelegate,UISearchBarDelegate>
@@ -44,7 +46,9 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self.viewModel fetchCharacterDataAtIndex:indexPath.row];
+    NSString *characterIdentifier = [self.viewModel volumeIdentifierAtIndex:indexPath.row];
+    [self performSegueWithIdentifier:@"characterSegue" sender:characterIdentifier];
+    
 }
 
 #pragma mark - Actions
@@ -96,6 +100,15 @@
     //Pasarle al viewModel de la tabla la suggestions
     self.viewModel.query = searchBar.text;
     [self.view endEditing:YES];
+}
+
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([segue.identifier isEqualToString:@"characterSegue"]) {
+        NSString *characterID = (NSString *) sender;
+        CharactersViewController *charactersVC = (CharactersViewController *)segue.destinationViewController;
+        [charactersVC setCharacterID:characterID];
+    }
 }
 
 @end

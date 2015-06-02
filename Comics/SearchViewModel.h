@@ -23,5 +23,5 @@
 -(SearchResultsViewModel *) resultAtIndex:(NSUInteger) index;
 -(void) fetchCharacterDataAtIndex:(NSUInteger ) index;
 -(void) fetchMoreResults;
-
+-(NSString *) volumeIdentifierAtIndex:(NSUInteger ) index;
 @end
