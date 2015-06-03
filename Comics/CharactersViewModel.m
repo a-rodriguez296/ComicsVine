@@ -62,7 +62,7 @@
 -(RACSignal *) fetchCharacterInfo{
     
     @weakify(self);
-    return [[[[self.client fetchCharactersWithVolumeID:self.characterID]  map:^id(Response *response) {
+    return [[[[[self.client fetchCharactersWithVolumeID:self.characterID]  map:^id(Response *response) {
         Volume *vol = response.results;
         return vol.characters;
     }] flattenMap:^id(NSArray * charactersArray) {
@@ -80,6 +80,8 @@
         @strongify(self);
         self.characters = response.results;
         
+    }] catch:^RACSignal *(NSError *error) {
+        return nil;
     }];
     
 }
