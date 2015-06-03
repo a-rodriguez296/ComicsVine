@@ -104,20 +104,6 @@
     return [[SearchResultsViewModel alloc] initWithImageUrl:[NSURL URLWithString:volume.imageURL] title:volume.title publisher:volume.publisher];
 }
 
-
-
-
--(void) fetchCharacterDataAtIndex:(NSUInteger ) index{
-    NSString *characterID = [self volumeIdentifierAtIndex:index];
-    [[[[[self.client fetchVolumeCharachtersWithId:characterID] map:^id(Response *value) {
-        
-        
-        NSArray *a =[NSArray arrayWithArray:[value.results objectForKey:@"characters]"]];
-        
-        return nil;
-    }] deliverOnMainThread]publish]connect];
-}
-
 #pragma mark Private
 
 -(NSString *) volumeIdentifierAtIndex:(NSUInteger ) index{

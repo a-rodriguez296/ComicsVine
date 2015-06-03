@@ -60,16 +60,24 @@
     return [self GET:@"search" parameters:parameters resultClass:Nil];
 }
 
--(RACSignal *) fetchVolumeCharachtersWithId:(NSString *) volumeID{
+-(RACSignal *) fetchCharactersWithVolumeID:(NSString *) volumeID{
     
-    NSString *filter = [NSString stringWithFormat:@"volume:%@",volumeID];
     NSDictionary *parameters = @{@"api_key":APIKey,
                                  @"format": format,
-                                 @"field_list":@"name,id,image",
-                                 @"filter": filter};
+                                 @"field_list":@"characters"};
+    
+    return [self GET:[NSString stringWithFormat:@"volume/4050-%@",volumeID] parameters:parameters resultClass:[Volume class]];
+}
+
+-(RACSignal *) fetchCharactersInfoWithId:(NSString *) characterID{
+    
+    NSString *filter = [NSString stringWithFormat:@"id:%@",characterID];
+    NSDictionary *parameters = @{@"api_key":APIKey,
+                                 @"format": format,
+                                 @"filter": filter,
+                                 @"field_list": @"name,image"};
     
     return [self GET:@"characters" parameters:parameters resultClass:[Character class]];
-    
 }
 
 

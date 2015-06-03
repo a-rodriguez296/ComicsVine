@@ -10,6 +10,7 @@
 #import "ComicsVineClient.h"
 #import "Response.h"
 #import "Character.h"
+#import "Volume.h"
 #import "Image.h"
 #import "CharacterResultViewModel.h"
 
@@ -61,11 +62,24 @@
 -(RACSignal *) fetchCharacterInfo{
     
     @weakify(self);
-    return [[[self.client fetchVolumeCharachtersWithId:self.characterID] deliverOnMainThread] map:^id(Response *response) {
+    return [[[[self.client fetchCharactersWithVolumeID:self.characterID]  map:^id(Response *response) {
+        Volume *vol = response.results;
+        return vol.characters;
+    }] flattenMap:^id(NSArray * charactersArray) {
         
-        @strongify(self)
+        NSMutableArray *idsArray = [NSMutableArray array];
+        for (Character *currentCharacter in charactersArray) {
+            [idsArray addObject:currentCharacter.characterId];
+        }
+        NSString *stringForQuery = [[idsArray valueForKey:@"description"] componentsJoinedByString:@"|"];
+        
+        @strongify(self);
+        return [[self.client fetchCharactersInfoWithId:stringForQuery] deliverOnMainThread];
+    }] doNext:^(Response *response) {
+        
+        @strongify(self);
         self.characters = response.results;
-        return nil;
+        
     }];
     
 }
